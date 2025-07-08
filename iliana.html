@@ -1,0 +1,152 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Para Iliana 💖</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body, html {
+      height: 100%;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #fbc2eb 0%, #a6c1ee 100%);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 500px;
+      height: 100%;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .page {
+      position: absolute;
+      top: 0;
+      left: 100%;
+      width: 100%;
+      height: 100%;
+      padding: 20px;
+      background: linear-gradient(120deg, #fce4ec, #f8bbd0);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      transition: left 0.7s ease;
+    }
+
+    .page.active {
+      left: 0;
+    }
+
+    .page img {
+      max-width: 300px;
+      margin-bottom: 20px;
+      border-radius: 20px;
+    }
+
+    .text {
+      font-size: 1.4rem;
+      color: #6a1b9a;
+      margin-bottom: 30px;
+    }
+
+    .btn {
+      background: #d500f9;
+      color: white;
+      padding: 12px 20px;
+      font-size: 1rem;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .btn:hover {
+      background: #aa00ff;
+    }
+
+    .flowers {
+      font-size: 1.5rem;
+      color: #c2185b;
+      margin-top: 20px;
+    }
+
+    .sticker {
+      font-size: 3rem;
+      margin: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Página 1 -->
+    <div class="page active">
+      <img src="https://i.imgur.com/Sr9ZPpi.jpg" alt="Flor de sakura" />
+      <button class="btn">Abre aquí</button>
+    </div>
+
+    <!-- Página 2 -->
+    <div class="page">
+      <div class="text">Iliana, sé que te sientes triste por todo lo que pasa y no sabes qué hacer...</div>
+      <button class="btn">Siguiente</button>
+    </div>
+
+    <!-- Página 3 -->
+    <div class="page">
+      <div class="text">Y tienes pensamientos de viejona 😟</div>
+      <div class="sticker">😟</div>
+      <button class="btn">Pero...</button>
+    </div>
+
+    <!-- Página 4 -->
+    <div class="page">
+      <div class="text">Yo te apoyaré en todo 💪</div>
+      <button class="btn">Solo recuerda</button>
+    </div>
+
+    <!-- Página 5 -->
+    <div class="page">
+      <img src="https://i.imgur.com/oUJuQXI.png" alt="Ramo de flores rosas" />
+      <div class="flowers">Recuerda que eres una <strong>mesa de crafteo</strong><br>¡Todos te necesitamos!</div>
+      <button class="btn">No te agüites</button>
+    </div>
+
+    <!-- Página 6 -->
+    <div class="page">
+      <div class="text">¡Siempre hay una forma de craftear algo mejor! 🛠️💖</div>
+    </div>
+  </div>
+
+  <audio id="xpSound" src="https://github.com/ThatRedKite/mc-mp3-sounds/raw/master/assets/minecraft/sounds/random/levelup.mp3"></audio>
+
+  <script>
+    const pages = document.querySelectorAll('.page');
+    const buttons = document.querySelectorAll('.btn');
+    const xpSound = document.getElementById('xpSound');
+
+    let currentPage = 0;
+
+    buttons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        xpSound.currentTime = 0;
+        xpSound.play();
+
+        pages[currentPage].classList.remove('active');
+        currentPage = Math.min(currentPage + 1, pages.length - 1);
+        pages[currentPage].classList.add('active');
+      });
+    });
+  </script>
+</body>
+</html>
